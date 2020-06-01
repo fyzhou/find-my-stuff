@@ -1,0 +1,136 @@
+entity Item {
+	id String,
+    name String,
+    description String,
+    category ItemCategory,
+    quantity Float,
+    unit ItemUnit,
+    picture1 ImageBlob,
+    picture2 ImageBlob
+}
+
+enum ItemCategory {
+    TOOLS, KITCHIN, CLOTHS, DOCUMENT, CHRISTMAS, SPORTING, COLLECTIBLE
+}
+
+enum ItemUnit {
+	COUNT, LB, INCH, FOOT
+}
+
+enum Color {
+	RED, BLUE, TRANSPARENT, WHITE
+}
+
+entity Bag {
+	label String,
+    type String,
+    color Color,
+    size Float,
+    picture ImageBlob
+}
+
+enum BagType {
+	PAPER, PLASTIC, ZIPLOCK, GARBAGE_BAG
+}
+
+entity Box {
+	label String,
+    type BoxType,
+    color Color,
+    size Float,
+    picture ImageBlob
+}
+
+enum BoxType {
+	SHOE_BOX, MILK_JAR, PENUTBUTTER_JAR
+}
+
+entity Container {
+	label String,
+    type ContainerType,
+    color Color,
+	height Float,
+	width Float,
+	length Float,
+    size Float,
+    picture ImageBlob
+}
+
+enum ContainerType {
+	BOX, BIN, BASKET
+}
+
+entity ShelfBay {
+	label String,
+	description String,
+    type ShelfBayType,
+    location String
+}
+
+enum ShelfBayType {
+	DRAWER, FLAT
+}
+
+entity Shelf {
+	label String,
+    description String,
+    type ShelfType,
+    room String,
+    location String,
+    picture ImageBlob
+}
+
+enum ShelfType {
+	CABINET, SHELF, CLOSET
+}
+
+entity Location {
+	label String,
+    anchor Furniture,
+    description String
+}
+
+enum Furniture {
+	BED, SOFA, DESK, TABLE, CHAIR, DINNING_TABLE
+}
+
+entity Room {
+    name String,
+    description String
+}
+
+relationship ManyToOne {
+	Item to Bag,
+    Item to Box,
+    Item to Container,
+    Item to ShelfBay,
+    Item to Location,
+	Bag to Box,
+    Bag to Container,
+    Bag to Location,
+	Box to Container,
+    Box to ShelfBay,
+    Box to Shelf,
+    Box to Location,
+	Container to ShelfBay,
+	Container to Shelf,
+    Container to Location,
+	ShelfBay to Shelf,
+    Shelf to Room,
+    Location to Room,
+}
+
+// Set pagination options
+paginate Item with infinite-scroll
+paginate Bag with infinite-scroll
+paginate Box with infinite-scroll
+paginate Container with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// 
