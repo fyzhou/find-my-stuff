@@ -32,7 +32,7 @@ class ItemForm extends Component {
     event.preventDefault();
     
     const { name, description } = this.state;
-    let item = new Item(name, description)
+    let item = Item.create(name, description)
     this.props.addItem(item)
     this.setState({ name: "", description: ""})
   }
