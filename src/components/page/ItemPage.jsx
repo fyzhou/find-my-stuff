@@ -21,8 +21,8 @@ class ItemPage extends Component {
   };
 
   render() {
-    const { searchField } = this.state
-    const visibleItems = this.props.items.filter(item => item.name.includes(searchField));
+    const { searchField } = this.state;
+    const visibleItems = this.props.items.items.filter(item => item.name.includes(searchField));
     return (
       <div className="container">
         <ItemForm />

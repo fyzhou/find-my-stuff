@@ -23,16 +23,13 @@ class ItemForm extends Component {
   }
 
   handleChange(event) {
-    console.log(event)
     this.setState({ [event.target.id]: event.target.value });
   }
 
   handleAddItem(event) {
-    console.log("Adding Item!");
     event.preventDefault();
-    
     const { name, description } = this.state;
-    let item = new Item(name, description)
+    let item = Item.create(name, description)
     this.props.addItem(item)
     this.setState({ name: "", description: ""})
   }
