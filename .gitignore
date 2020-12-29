@@ -1,0 +1,13 @@
+FindMyStuff/.node_modules/**/*
+FindMyStuff/.expo/*
+FindMyStuff/npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+FindMyStuff/web-build/
+
+# macOS
+.DS_Store
